@@ -20,4 +20,8 @@ class Book {
     function readBook($sql){
         return $this->crud->read($sql, $this->pdo);
     }
+
+    function updateBook($sql){
+        return $this->crud->update($sql, $this->pdo);
+    }
 }

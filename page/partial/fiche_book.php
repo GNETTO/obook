@@ -1,5 +1,5 @@
-<form class="needs-validatio" novalidat   id="form-ajout-livre" method="post" >
-    <div class="bg-primary p-1 text-center text-light  mb-3 mt-3"> Ajouter un livre</div>
+<form class="needs-validatio" novalidat   id="form-ajout-livre" method="post" enctype="multipart/form-data">
+    
         <div class="d-flex w-100 bg-light border p-3">
 
             <div class="w-75">
@@ -105,23 +105,46 @@
                 <label class="custom-file col-sm-2 col-lg-12">Illustration </label>
                 <div class="col-sm-10 col-lg-12 custom-file">
                   <input type="file" class="custom-file-input" id="file_livre" name="file_livre" >
+                  <input type="text" class="custom-file-input" id="path_livre" name="path_livre" value="<?php  if(isset($data)) {echo $data['photo'];}else{ echo "http://localhost/IGS/chalengePhpInscription/publics/solid_svg/user-circle.svg"; } ?>" >
                 </div>
               </div>
                 
               <div class="row mb-3" >
                 <div class="d-flex justify-content-center col-12">
-                  <img class="loadedImage thumbnail" id="img_modification_c" src="http://localhost/IGS/chalengePhpInscription/publics/solid_svg/user-circle.svg" style="width:80px">
+                  <img class="loadedImage thumbnail w-100"id="img_modification" src="<?php  if(isset($data)) {echo $data['photo'];}else{ echo "http://localhost/IGS/chalengePhpInscription/publics/solid_svg/user-circle.svg"; } ?>" style="width:80px">
                 </div>
-                <div class="image-info col-12 text-danger" id="image-info_c"></div>
+                <div class="image-info col-12 text-danger" id="image-info"></div>
               </div>
             </div>
             
         </div>
-        <div class="d-flex justify-content-center mt-3 bg-light">
-            <button type="submit" class="btn btn-dark" type="button"   data-bs-dismiss="modal" aria-label="Close"  name="btn_retour_livre"    id="btn_retour_livre">Retour</button>
-            <button type="submit" class="btn btn-success" type="button" name="btn_ajouter_livre"   id="btn_ajouter_livre">Ajouter</button>
-            <button type="submit" class="btn btn-warning" type="button" name="btn_modifier_livre"  id="btn_modifier_livre">Modifier</button>
-            <button type="submit" class="btn btn-danger "  type="button" name="btn_supprimer_livre" id="btn_supprimer_livre">Supprimer</button>
-        </div>
-    </div>
-</form>
+        
+
+<script>
+
+// uploading photo
+let file = document.getElementById("file_livre"); 
+let img_modification = document.getElementById("img_modification") ;
+let image_info = document.getElementById("image-info") ;
+console.log(file)
+  //console.log( file)
+file.addEventListener("change",e=>{
+    let f = event.target.files[0]; console.log( typeof f)
+    let fType = f.type ;
+   
+    let validextension = ["image/jpeg","image/png","image/jpg"];
+    if(fType == validextension[0] || fType == validextension[1] || fType == validextension[2]){
+      let fileReader = new FileReader();
+      fileReader.onload = function(e){
+        img_modification.src = e.target.result;
+      }
+      fileReader.readAsDataURL(f);
+      image_info.innerHTML ="";
+    }else{
+      img_modification.src="";
+      file.value="";
+      image_info.innerHTML = "Ce fichier n' est pas un image  ";
+      img_modification.src ="assets/solid_svg/exclamation-circle.svg"
+    }
+  })      
+</script>
