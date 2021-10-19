@@ -18,7 +18,7 @@ class Router {
         $this->request = new Request($this);
         $this->response = new Response($this);
         $this->init();
-        echo "<div class='text-end p-2'> query =".$this->query ."<br> uri =>".$this->uri . "<br> current_dir =>".$this->current_dir . " <br> root=>".$this->root. "<br> </div>";
+        //echo "<div class='text-end p-2'> query =".$this->query ."<br> uri =>".$this->uri . "<br> current_dir =>".$this->current_dir . " <br> root=>".$this->root. "<br> </div>";
     }
 
     function init(){
@@ -75,7 +75,7 @@ class Router {
         if(strpos(strtolower($path), $this->uri) ==true ){
             return true ;
         }
-        return false;
+        return true;
     }
 
     function post($reqString, $handler){
