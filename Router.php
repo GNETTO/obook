@@ -30,7 +30,7 @@ class Router {
         $this->query = strtolower($_SERVER['QUERY_STRING']);
         $this->parseBody();
         $this->parseQuery();
-        $thi->pareseParams();
+        $this->pareseParams();
     }
 
     function parseBody(){
@@ -75,7 +75,7 @@ class Router {
         if(strpos(strtolower($path), $this->uri) ==true ){
             return true ;
         }
-        return false;
+        return true;
     }
 
     function post($reqString, $handler){
