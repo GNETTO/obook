@@ -1,14 +1,9 @@
 <?php
 
-global  $includepage ;
-
 require("Router.php");
-
-//echo $_SERVER['REQUEST_METHOD'];
 
 $router = new Router();
 
-$globaldata ="";
 $router->get('acceuil', function($req, $res){
     
    $res->render("acceuil.php",array("email"=>"tierogneto@gmail.com"));
@@ -130,7 +125,9 @@ $router->post('dashboard_updatebook', function($req, $res){
         }else{
 
         }
-        $res->render("updatebook.php",$one_book);
+        //$res->render("updatebook.php",$one_book);
+        
+        header("Location:dashboard_updatebook?id=".$id."");
         
     }
     catch(Exception $e){
@@ -184,9 +181,47 @@ $router->post('dashboard_addbook', function($req, $res){
     $res->render("addbook.php");
 });
 
+
+
 $router->get('dashboard_deletebook', function($req, $res){
     
-    $res->render("deletebook.php");
+    try {
+        require("model/Books.php");
+        $id =  $req->query()['id'];
+    
+        $book = new Book();
+        $sql = "SELECT * FROM book where id='".$id."'";
+    
+        $books = $book->readBook($sql);
+        $one_book =array();
+        while($b = $books->fetch()){
+            array_push($one_book,$b);
+        }
+        $res->render("deletebook.php",$one_book[0]);
+       }
+       catch(Exception $e){
+            header("Location:erreur?name=creation de livre&message=".$e->getMessage());
+        }
+});
+
+
+$router->post('dashboard_deletebook', function($req, $res){
+    
+    try {
+        require("model/Books.php");
+        $id =  $req->body()['id_livre'];
+
+        $book = new Book();
+        $sql = "DELETE FROM book WHERE  id='".$id."'";
+        $one_book = $book->deleteBook($sql);
+        
+        header("Location:dashboard_deletebook");
+        
+    }
+    catch(Exception $e){
+        header("Location:erreur?name=creation de livre&message=".$e->getMessage());
+    }
+    
 });
 
 $router->get('test', function($req, $res){
@@ -200,31 +235,9 @@ $router->post('vente', function($req){
 
 
 $router->nothing(function($req, $res){
-    //$data_error = array('name'=> $req->query()['name'], 'message'=>$req->query()['message']);
-    //echo $_GET['id'];
+    
     $res->render("error.php");
-    //echo $req->query()['message'];
+    
 });
 
-//echo $_SERVER['REQUEST_URI'];
-
-/*$body  =array();
-if($_SERVER['REQUEST_METHOD'] == "POST"){
-
-    foreach($_POST as $key=>$val ){
-        echo $key . " => ".$val ."<br>";
-        $body[$key]= $val;
-    }
-}*/
-
-//$bodytag = str_replace("body", "black", "body"); echo $bodytag . " hello" ;
-
-/*$str = "maman travail" ; 
-if( strpos($str, "travails") ){
-    echo "Match";
-}else {
-    echo "no match";
-}
- */
-?>
 

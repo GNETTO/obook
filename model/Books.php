@@ -24,4 +24,8 @@ class Book {
     function updateBook($sql){
         return $this->crud->update($sql, $this->pdo);
     }
+
+    function deleteBook($sql){
+        return $this->crud->delete($sql, $this->pdo);
+    }
 }

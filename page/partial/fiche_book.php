@@ -105,7 +105,7 @@
                 <label class="custom-file col-sm-2 col-lg-12">Illustration </label>
                 <div class="col-sm-10 col-lg-12 custom-file">
                   <input type="file" class="custom-file-input" id="file_livre" name="file_livre" >
-                  <input type="text" class="custom-file-input" id="path_livre" name="path_livre" value="<?php  if(isset($data)) {echo $data['photo'];}else{ echo "http://localhost/IGS/chalengePhpInscription/publics/solid_svg/user-circle.svg"; } ?>" >
+                  <input type="text" class="custom-file-input d-none" id="path_livre" name="path_livre" value="<?php  if(isset($data)) {echo $data['photo'];}else{ echo "http://localhost/IGS/chalengePhpInscription/publics/solid_svg/user-circle.svg"; } ?>" >
                 </div>
               </div>
                 
