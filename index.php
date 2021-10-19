@@ -6,6 +6,7 @@ $router = new Router();
 
 $router->get('acceuil', function($req, $res){
     
+    
    $res->render("acceuil.php",array("email"=>"tierogneto@gmail.com"));
    
 });
