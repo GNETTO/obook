@@ -39,21 +39,22 @@ $router->get('dashboard_tous_livres', function($req, $res){
 });
 
 
-$router->get('dashboard_updatebook/:id', function($req, $res){
+$router->get('dashboard_updatebook', function($req, $res){
 
    try {
     require("model/Books.php");
-    //$id =  $req->query()['id'];
-    $id= 1 ;
+    $id =  $req->query()['id'];
+    //echo $id;
+    
     $book = new Book();
     $sql = "SELECT * FROM book where id='".$id."'";
 
     $books = $book->readBook($sql);
     $one_book =array();
-    while($b= $books->fetch()){
-        array_push($b,$one_book);
+    while($b = $books->fetch()){
+        array_push($one_book,$b);
     }
-    $res->render("updatebook.php",$one_book);
+    $res->render("updatebook.php",$one_book[0]);
    }
    catch(Exception $e){
         header("Location:erreur?name=creation de livre&message=".$e->getMessage());
@@ -111,8 +112,8 @@ $router->post('dashboard_addbook', function($req, $res){
 
 
 
-$router->get('', function($req){
-    echo "get vente";
+$router->get('test', function($req, $res){
+    $res->render('test.php');
 },"");
 
 $router->post('vente', function($req){
@@ -123,7 +124,7 @@ $router->post('vente', function($req){
 
 $router->nothing(function($req, $res){
     //$data_error = array('name'=> $req->query()['name'], 'message'=>$req->query()['message']);
-    echo $_GET['id'];
+    //echo $_GET['id'];
     $res->render("error.php");
     //echo $req->query()['message'];
 });

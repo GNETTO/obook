@@ -15,6 +15,7 @@
     </tr>
 </thead>
 <?php 
+// href='dashboard_updatebook?id=".$book['id']."'
     while($book = $data->fetch()){
         echo "<tr>
             <td>".$book['id']."</td>
@@ -26,7 +27,7 @@
             <td>".$book['auteur']."</td>
             <td>
                <button class='btn btn-sm btn-outline-secondary btn-sm btn-action-c' data-idanimal='".$book['id']."' data-action='0' > ... </button>
-               <a class='btn btn-sm btn-outline-secondary btn-sm btn-action-c' href='dashboard_updatebook!".$book['id']."' data-idanimal='".$book['id']."'  data-action='1'> <img src''> </a>
+               <a class='btn btn-sm btn-outline-secondary btn-sm btn-action-c' href='dashboard_updatebook?id=".$book['id']."' data-idanimal='".$book['id']."'  data-action='1'> <img src''> </a>
                <button class='btn btn-sm btn-outline-secondary btn-sm btn-action-c' data-idanimal='".$book['id']."'   data-action='2'> - </button>
             </td>
         
