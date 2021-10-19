@@ -125,30 +125,16 @@ class Response {
         $this->router = $router;
     }
 
-    function render($page, $data=null){
-     
-       /*if($dashbordHeader == "d"){
-
-        require("Pages/dashboardheader.php");
-        require("Pages/".$page);
-        
-       }
-       else if($dashbordHeader == "self_header")
-       {
-        require("Pages/login.php");
-       }
-       else
-       {
-        require("Pages/header.php");
-        require("Pages/".$page);
-        require("Pages/footer.php");
-
-       } */
+    function render_dashboard($page, $data=null){
 
        require("page/".$page);
        require("page/template.php");
-
     }
 
+    function render($page, $data=null){
+
+        require("page/".$page);
+        require("page/hometemplate.php");
+     }
 }
 ?>

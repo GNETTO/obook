@@ -13,7 +13,7 @@ $router->get('acceuil', function($req, $res){
 
 $router->get('dashboard', function($req, $res){
     
-    $res->render("dashboard.php");
+    $res->render_dashboard("dashboard.php");
 });
 
 $router->get('dashboard_tous_livres', function($req, $res){
@@ -24,7 +24,7 @@ $router->get('dashboard_tous_livres', function($req, $res){
         $sql = "SELECT * FROM  book";
 
         $books = $book->readBook($sql);
-        $res->render("tous_livres.php",$books);
+        $res->render_dashboard("tous_livres.php",$books);
     }
     catch(Exception $e){
         header("Location:erreur?name=creation de livre&message=".$e->getMessage());
@@ -48,7 +48,7 @@ $router->get('dashboard_updatebook', function($req, $res){
     while($b = $books->fetch()){
         array_push($one_book,$b);
     }
-    $res->render("updatebook.php",$one_book[0]);
+    $res->render_dashboard("updatebook.php",$one_book[0]);
    }
    catch(Exception $e){
         header("Location:erreur?name=creation de livre&message=".$e->getMessage());
@@ -125,7 +125,7 @@ $router->post('dashboard_updatebook', function($req, $res){
         }else{
 
         }
-        //$res->render("updatebook.php",$one_book);
+        //$res->render_dashboard("updatebook.php",$one_book);
         
         header("Location:dashboard_updatebook?id=".$id."");
         
@@ -139,7 +139,7 @@ $router->post('dashboard_updatebook', function($req, $res){
 
 $router->get('dashboard_addbook', function($req, $res){
     
-    $res->render("addbook.php");
+    $res->render_dashboard("addbook.php");
 });
 
 $router->post('dashboard_addbook', function($req, $res){
@@ -178,7 +178,7 @@ $router->post('dashboard_addbook', function($req, $res){
         header("Location:erreur?name=creation de livre&message=".$e->getMessage());
     }
     
-    $res->render("addbook.php");
+    $res->render_dashboard("addbook.php");
 });
 
 
@@ -197,7 +197,7 @@ $router->get('dashboard_deletebook', function($req, $res){
         while($b = $books->fetch()){
             array_push($one_book,$b);
         }
-        $res->render("deletebook.php",$one_book[0]);
+        $res->render_dashboard("deletebook.php",$one_book[0]);
        }
        catch(Exception $e){
             header("Location:erreur?name=creation de livre&message=".$e->getMessage());
@@ -225,7 +225,7 @@ $router->post('dashboard_deletebook', function($req, $res){
 });
 
 $router->get('test', function($req, $res){
-    $res->render('test.php');
+    $res->render_dashboard('test.php');
 },"");
 
 $router->post('vente', function($req){
@@ -236,7 +236,7 @@ $router->post('vente', function($req){
 
 $router->nothing(function($req, $res){
     
-    $res->render("error.php");
+    $res->render_dashboard("error.php");
     
 });
 
