@@ -225,20 +225,19 @@ $router->post('dashboard_deletebook', function($req, $res){
     
 });
 
+
 $router->get('test', function($req, $res){
     $res->render_dashboard('test.php');
-},"");
-
-$router->post('vente', function($req){
-    echo "post vente";
 });
 
+
+$router->get('login', function($req, $res){
+    $res->render_self('login.php');
+});
 
 
 $router->nothing(function($req, $res){
     
-    $res->render_dashboard("error.php");
+    $res->render("error.php");
     
 });
-
-

@@ -4,13 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="author" content="Mr Gneto Tiero,Virtual  Books Library">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Dashboard Template · Bootstrap v5.0</title>
+    <title>Dashboard</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
-    <script src="modules/helpers.js"></script>
-    <script src="modules/method.js"></script>
+    
     
 
       <!-- Bootstrap core CSS -->
@@ -38,16 +37,7 @@
     
   </head>
   <body>
-    
-
-  <!-- MODAL FOR ADDING , MODIFYING , UPDATE chien Info -->
-        <?php  
-        
-          //require("partials/modal-fiche-chien.php");
-          //require("partials/modal-fiche-oiseau.php");
-
-        ?>
-   
+  
 
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
       <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="acceuil">Page Acceuil</a>

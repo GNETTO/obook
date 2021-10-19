@@ -136,5 +136,11 @@ class Response {
         require("page/".$page);
         require("page/hometemplate.php");
      }
+
+     function render_self($page, $data=null){
+
+        require("page/".$page);
+        
+     }
 }
 ?>
