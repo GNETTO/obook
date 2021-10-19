@@ -30,7 +30,7 @@ class Router {
         $this->query = strtolower($_SERVER['QUERY_STRING']);
         $this->parseBody();
         $this->parseQuery();
-        $thi->pareseParams();
+        $this->pareseParams();
     }
 
     function parseBody(){
