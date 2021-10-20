@@ -1,27 +1,28 @@
 <?php
 require("crud.php");
-class Book {
+class Users {
 
     var $pdo ;
     var $crud;
+
     function __construct(){
         $this->pdo = new PDO("mysql:dbname=obook; host=localhost","root","");
         $this->crud =  new Crud();
     }
-    
-    function addBook($sql){
+
+    function addUser($sql){
         return $this->crud->create($sql, $this->pdo);
     }
 
-    function readBook($sql){
+    function readUser($sql){
         return $this->crud->read($sql, $this->pdo);
     }
 
-    function updateBook($sql){
+    function updateUser($sql){
         return $this->crud->update($sql, $this->pdo);
     }
 
-    function deleteBook($sql){
+    function deleteUser($sql){
         return $this->crud->delete($sql, $this->pdo);
     }
 }

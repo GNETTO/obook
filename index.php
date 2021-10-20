@@ -6,8 +6,22 @@ $router = new Router();
 
 $router->get('acceuil', function($req, $res){
     
+    try {
+        require("model/Books.php");
     
-   $res->render("acceuil.php",array("email"=>"tierogneto@gmail.com"));
+        $book = new Book();
+        $sql = "SELECT * FROM book ";
+    
+        $books = $book->readBook($sql);
+       
+      
+        $res->render("acceuil.php",$books);
+       }
+       catch(Exception $e){
+            header("Location:erreur?name=creation de livre&message=".$e->getMessage());
+        }
+    
+   
    
 });
 
@@ -233,6 +247,29 @@ $router->get('test', function($req, $res){
 
 $router->get('login', function($req, $res){
     $res->render_self('login.php');
+});
+
+$router->post('login', function($req, $res){
+        require("model/users.php");
+        $email =     $req->body()['email'];
+        $password =  $req->body()['password'];
+
+        try {
+            $user = new Users();
+            $sql = "SELECT * FROM collaborateur where email='".$email."' AND pass ='".$password."'";
+    
+            $u = $user->readUser($sql);
+             $current_user=$u->fetch() ;
+            if( $current_user ){
+               // echo  50 ; //$r['email'];
+                header("Location:dashboard"); 
+            }
+        }
+        catch(Exception $e){
+            header("Location:erreur?name=creation de livre&message=".$e->getMessage());
+        }
+    //header("Location:dashboard");
+   // $res->render_self('login.php');
 });
 
 

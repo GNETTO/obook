@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="author" content="Mr Gneto Tiero ">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Signin Template · Bootstrap v5.0</title>
+    <title>SBook Library : Login please </title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
     <!-- Bootstrap core CSS -->
@@ -37,7 +37,7 @@
 <main class="form-signin">
   <form method="post" action="">
     <img class="mb-4" src="assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+    <h1 class="h3 mb-3 fw-normal">Entrez vos identifiants</h1>
 
     <div class="form-floating">
       <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
@@ -53,7 +53,7 @@
         <input type="checkbox" value="remember-me"> Remember me
       </label>
     </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Connexion</button>
     <p class="mt-5 mb-3 text-muted"> <a href="acceuil" >Retour page d'Acceuil</a></p>
   </form>
 </main>
