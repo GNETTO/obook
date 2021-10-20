@@ -8,45 +8,46 @@
          <tr>
              <td> Auteur</td>
              <td> '.$data['auteur'].'</td>
-             <td> </td>
+             <td rowspan=6><img src='.$data['photo'].'> </td>
          </tr>
          <tr>
              <td> Titre</td>
              <td>'.$data['titre'].' </td>
-             <td> </td>
+            
          </tr>
          <tr>
              <td> Nationalité</td>
              <td> '.$data['nationalite'].'</td>
-             <td> </td>
+            
          </tr>
          <tr>
              <td> Nombre de page</td>
              <td> '.$data['page'].'</td>
-             <td> </td>
+            
          </tr>
          <tr>
              <td> Parution</td>
              <td>'.$data['parution'].' </td>
-             <td> </td>
+            
          </tr>
      
          <tr>
              <td> Prix</td>
              <td> '.$data['prix'].'</td>
-             <td> </td>
+             
          </tr>
          <tr>
              <td> Courant</td>
              <td> '.$data['courant'].'</td>
-             <td> </td>
+            
          </tr>
          <tr>
              <td> Description</td>
              <td> '.$data['description'].'</td>
-             <td> </td>
+           
          </tr>
      </table>
+
          ';
     ?>
 

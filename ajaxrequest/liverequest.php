@@ -18,33 +18,33 @@ try {
     <tr>
         <td> Auteur</td>
         <td> '.$one_book[0]['auteur'].'</td>
-        <td> </td>
+        <td rowspan=6><img src='.$one_book[0]['photo'].' width=160> </td>
     </tr>
     <tr>
         <td> Titre</td>
         <td>'.$one_book[0]['titre'].' </td>
-        <td> </td>
+        
     </tr>
     <tr>
         <td> Nationalité</td>
         <td> '.$one_book[0]['nationalite'].'</td>
-        <td> </td>
+        
     </tr>
     <tr>
         <td> Nombre de page</td>
         <td> '.$one_book[0]['page'].'</td>
-        <td> </td>
+        
     </tr>
     <tr>
         <td> Parution</td>
         <td>'.$one_book[0]['parution'].' </td>
-        <td> </td>
+        
     </tr>
 
     <tr>
         <td> Prix</td>
         <td> '.$one_book[0]['prix'].'</td>
-        <td> </td>
+        
     </tr>
     <tr>
         <td> Courant</td>
