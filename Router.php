@@ -142,5 +142,9 @@ class Response {
         require("page/".$page);
         
      }
+
+     function render_error($page, $data=null){
+        require("page/".$page);
+     }
 }
 ?>

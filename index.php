@@ -20,8 +20,6 @@ $router->get('acceuil', function($req, $res){
        catch(Exception $e){
             header("Location:erreur?name=creation de livre&message=".$e->getMessage());
         }
-    
-   
    
 });
 
@@ -272,9 +270,32 @@ $router->post('login', function($req, $res){
    // $res->render_self('login.php');
 });
 
+$router->get('livre', function($req, $res){
+    
+    try {
+        require("model/Books.php");
+        $id =  $req->query()['id'];
+    
+        $book = new Book();
+        $sql = "SELECT * FROM book where id='".$id."'";
+    
+        $books = $book->readBook($sql);
+        $one_book =array();
+        while($b = $books->fetch()){
+            array_push($one_book,$b);
+           
+        }
+        $res->render("livre.php",$one_book[0]);
+       }
+       catch(Exception $e){
+            header("Location:erreur?name=creation de livre&message=".$e->getMessage());
+        }
+});
 
 $router->nothing(function($req, $res){
     
     $res->render("error.php");
     
 });
+
+

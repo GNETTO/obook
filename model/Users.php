@@ -26,3 +26,5 @@ class Users {
         return $this->crud->delete($sql, $this->pdo);
     }
 }
+
+// 180 270

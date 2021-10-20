@@ -32,7 +32,7 @@
         
           <div class=" d-flex justify-content-between">
               <ul class="list-unstyled d-flex">
-                  <li class="p-2 m-1"> <a href="" >ACCEUIL</a></li>
+                  <li class="p-2 m-1"> <a href="acceuil" >ACCEUIL</a></li>
                   <li class="p-2 m-1"> <a href="" >CONTACTS</a></li>
                   <li class="p-2 m-1"> <a href="" >QUI SOMMES NOUS</a></li>
               </ul>
@@ -48,10 +48,7 @@
         <?=$content ?>
 
 </main>
-<script>
 
-//document.getElementById("a").click()
-</script>
 <script src="assets/cdn/bootstrap.min.js"></script>
 <script src="assets/cdn/popper.min.js"></script>
 <script src="assets/cdn/query-3.2.1.slim.min.js"></script>

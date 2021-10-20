@@ -27,3 +27,9 @@ acceuil
 .trash-cash {
    width: 15px;
 }
+.like-icon {
+
+}
+.like-icon:hover {
+   cursor: pointer;
+}
