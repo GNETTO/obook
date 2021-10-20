@@ -52,6 +52,10 @@ home css
   background-color: yellowgreen;
 }
 
+.ligne-livre :hover {
+  background-color: rgb(207, 227, 235);
+  cursor: pointer;
+}
 /*end home---*/
 @media (max-width: 767.98px) {
   .sidebar {
