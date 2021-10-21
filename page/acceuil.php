@@ -16,7 +16,7 @@
                             <a class="portfolio-item" href="livre?id='.$book['id'].'&titre='.$book['titre'].'">
                                 <div class="caption">
                                     <div class="caption-content">
-                                        <div class="h4">'.$book['titre'].'</div>
+                                        <div class="h5">'.$book['titre'].'</div>
                                         <p class="mb-0">'.$book['auteur'].'</p>
                                     </div>
                                 </div>

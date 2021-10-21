@@ -71,7 +71,7 @@ class Router {
     }
     private function compareDirectory($reqString){
         $path = str_replace("\\","/",$this->current_dir.DIRECTORY_SEPARATOR.$reqString) ; //echo $path ."<br>";
-        $this->uri = preg_split( '/\?/',$this->uri)[0];  // remove params
+        $this->uri = preg_split( '/\?/',$this->uri)[0];  // remove params like ...?id=10
         //echo "<div class='text-end p-2'> path ".$path."-  uri ".$this->uri."- Query ".$reqString."</div>";
         if(strpos(strtolower($path), $this->uri) ==true ){
             //echo "<div class='text-end p-2'> path OK</div>";

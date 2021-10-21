@@ -244,10 +244,15 @@ $router->get('test', function($req, $res){
 
 
 $router->get('login', function($req, $res){
+    session_start();
+    if( $_SESSION['user'] != null  ){
+        header("Location:dashboard"); 
+    }
     $res->render_self('login.php');
 });
 
 $router->post('login', function($req, $res){
+        
         require("model/users.php");
         $email =     $req->body()['email'];
         $password =  $req->body()['password'];
@@ -259,6 +264,8 @@ $router->post('login', function($req, $res){
             $u = $user->readUser($sql);
              $current_user=$u->fetch() ;
             if( $current_user ){
+                session_start();
+                $_SESSION['user']= $current_user ;
                // echo  50 ; //$r['email'];
                 header("Location:dashboard"); 
             }
@@ -291,6 +298,13 @@ $router->get('livre', function($req, $res){
             header("Location:erreur?name=creation de livre&message=".$e->getMessage());
         }
 });
+
+$router->get('logout', function($req, $res){
+    session_start();
+    $_SESSION['user'] = null ;
+    header("Location:acceuil"); 
+});
+
 
 $router->nothing(function($req, $res){
     
