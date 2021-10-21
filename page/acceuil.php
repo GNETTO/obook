@@ -12,7 +12,7 @@
             <?php 
                 while($book = $data->fetch()){
                     
-                  echo ' <div class="col-lg-6 mb-4" style="height:250px">
+                  echo ' <div class="col-lg-6 mb-5" style="height:250px">
                             <a class="portfolio-item" href="livre?id='.$book['id'].'&titre='.$book['titre'].'">
                                 <div class="caption">
                                     <div class="caption-content">

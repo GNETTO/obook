@@ -17,7 +17,7 @@
 <?php 
 // href='dashboard_updatebook?id=".$book['id']."'
     while($book = $data->fetch()){
-        echo "<tr class='ligne-livre' data-bgmouseover='lightblue' data-bgmouseout='white' data-book=".$book['id'].">
+        echo "<tr class='ligne-livre' data-bgmouseover='lightblue' data-bgmouseout='white' data-book=".$book['id']." data-selected='0'>
                 <td>".$book['id']."</td>
                 <td>".$book['titre']."</td>
                 <td>".$book['page']."</td>
@@ -36,7 +36,7 @@
 ?>
 </table>
 <div class="" id="vision-livre">
-   ss
+   
 </div>
 
 <script>
@@ -93,32 +93,44 @@ function AjaxRequest(method, action, query, callback){
 }
 
     let ligne_tous_livre = document.querySelectorAll(".ligne-livre");
-
+    ligne_tous_livre[0].style.backgroundColor=ligne_tous_livre[0].getAttribute('data-bgmouseover');
+    
     Array.prototype.map.call(ligne_tous_livre , ligne=>{
 
         ligne.addEventListener("mouseover", event=>{
-            event.currentTarget.style.backgroundColor = event.currentTarget.getAttribute('data-bgmouseover');
+           // event.currentTarget.style.backgroundColor = event.currentTarget.getAttribute('data-bgmouseover');
         });
 
         ligne.addEventListener("mouseout", event=>{
-            event.currentTarget.style.backgroundColor = event.currentTarget.getAttribute('data-bgmouseout');
+            if(event.currentTarget.getAttribute('data-selected') == 1 ){
+                return ;
+            }
+            //event.currentTarget.style.backgroundColor = event.currentTarget.getAttribute('data-bgmouseout');
         });
 
 
         ligne.addEventListener("click", event=>{
             let book = event.currentTarget.getAttribute('data-book');
             let query="id="+book;
+            
+            Array.prototype.map.call(ligne_tous_livre , ligne=>{
+                ligne.style.backgroundColor = event.currentTarget.getAttribute('data-bgmouseout');
+            });
+            event.currentTarget.style.backgroundColor = event.currentTarget.getAttribute('data-bgmouseover');
+           
             AjaxRequest("GET","ajaxrequest/liverequest.php",query, ajaxr =>{
               if(ajaxr.responseText != -1 ){
-                  document.getElementById("vision-livre").innerHTML=ajaxr.responseText
+                  document.getElementById("vision-livre").innerHTML=ajaxr.responseText;
+                  
                 //alert(ajaxr.responseText)
                 console.log(ajaxr.responseText)
               }else{
-                alert("Echec d enregistrement")
+                document.getElementById("vision-livre").innerHTML="<div class='bg-danger'> Erreur lors du chargement de donnee</div>";
               }
             })
         });
     });
+    ligne_tous_livre[0].click();
 
 </script>
 <?php $content=ob_get_clean();  ?>
