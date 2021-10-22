@@ -157,19 +157,37 @@ $router->get('dashboard_addbook', function($req, $res){
 
 $router->post('dashboard_addbook', function($req, $res){
     require("model/Books.php");
-
-
     try {
 
-        $auteur_livre    =  $req->body()['auteur_livre'];
-        $titre_livre     =  $req->body()['titre_livre'];
-        $nbpage_livre    =  $req->body()['nbpage_livre'];
-        $prix_livre      =  $req->body()['prix_livre'];
-        $parution_livre  =  $req->body()['parution_livre'];
-        $courant_livre   =  $req->body()['courant_livre'];
-        $desc_livre      =  $req->body()['desc_livre'];
-        $nat_livre       =  $req->body()['nationalite_livre'];
-
+        $auteur_livre    =  htmlspecialchars($req->body()['auteur_livre']);
+        $titre_livre     =  htmlspecialchars($req->body()['titre_livre']);
+        $nbpage_livre    =  htmlspecialchars($req->body()['nbpage_livre']);
+        $prix_livre      =  htmlspecialchars($req->body()['prix_livre']);
+        $parution_livre  =  htmlspecialchars($req->body()['parution_livre']);
+        $courant_livre   =  htmlspecialchars($req->body()['courant_livre']);
+        $desc_livre      =  htmlspecialchars($req->body()['desc_livre']);
+        $nat_livre       =  htmlspecialchars($req->body()['nationalite_livre']);
+        $path_livre="";
+        if(isset($_FILES['file_livre']['name'])){
+            // echo "<div class='text-end p-2'> post update : ".$_FILES['file_livre']['name']." </div>";
+             $filename = $_FILES['file_livre']['name'];
+         
+             /* Location */
+             $location = "upload/".$filename;
+             $imageFileType = pathinfo($location,PATHINFO_EXTENSION);
+             $imageFileType = strtolower($imageFileType);
+             
+              /* Valid extensions */
+             $valid_extensions = array("jpg","jpeg","png");  
+             /* Check file extension */
+             if(in_array(strtolower($imageFileType), $valid_extensions)) {
+             /* Upload file */
+                 if(move_uploaded_file($_FILES['file_livre']['tmp_name'], $location)){
+                     $location = "upload/".$filename;
+                     $path_livre = $location;
+                 }  
+             }
+         }
         $book = new Book();
         $sql = "INSERT INTO book VALUES(
             null,
@@ -181,11 +199,16 @@ $router->post('dashboard_addbook', function($req, $res){
             '".$parution_livre."',
             '".$courant_livre."',
             '".$desc_livre."',
-            ''
+            '".$path_livre."'
         )";
 
-        $book->addBook($sql);
+         if($book->addBook($sql) != 0){
+            header("Location:dashboard_tous_livres");
+         }
+         else{ 
 
+         }
+     
     }
     catch(Exception $e){
         header("Location:erreur?name=creation de livre&message=".$e->getMessage());
@@ -247,12 +270,14 @@ $router->get('login', function($req, $res){
     session_start();
     if( $_SESSION['user'] != null  ){
         header("Location:dashboard"); 
+    }else{ 
+        $res->render_self('login.php');
     }
-    $res->render_self('login.php');
+    
 });
 
 $router->post('login', function($req, $res){
-        
+       
         require("model/users.php");
         $email =     $req->body()['email'];
         $password =  $req->body()['password'];
@@ -262,12 +287,19 @@ $router->post('login', function($req, $res){
             $sql = "SELECT * FROM collaborateur where email='".$email."' AND pass ='".$password."'";
     
             $u = $user->readUser($sql);
-             $current_user=$u->fetch() ;
-            if( $current_user ){
+            $current_user = '' ;
+            $counter = 0 ;
+            while( $row=$u->fetch() ){
+                $counter++;
+                $current_user= $row;
+            }
+           
+            if( $counter == 1){
                 session_start();
                 $_SESSION['user']= $current_user ;
-               // echo  50 ; //$r['email'];
                 header("Location:dashboard"); 
+            }else{ 
+                $res->render_self('login.php');
             }
         }
         catch(Exception $e){

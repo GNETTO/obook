@@ -18,7 +18,7 @@ try {
     <tr>
         <td> Auteur</td>
         <td> '.$one_book[0]['auteur'].'</td>
-        <td rowspan=6><img src='.$one_book[0]['photo'].' width=160> </td>
+        <td rowspan=6><img src="'.$one_book[0]['photo'].'" width=160> </td>
     </tr>
     <tr>
         <td> Titre</td>

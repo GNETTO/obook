@@ -20,7 +20,7 @@
                                         <p class="mb-0">'.$book['auteur'].'</p>
                                     </div>
                                 </div>
-                                <img class="img-fluid" src='.$book['photo'].' alt="..." / style="height:70%;width:60%">
+                                <img class="img-fluid" src="'.$book['photo'].'" alt="..." / style="height:70%;width:60%">
                             </a>
                             
                             <div class="mt-2">

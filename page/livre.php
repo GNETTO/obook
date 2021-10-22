@@ -4,15 +4,15 @@
    
     <?php
          echo   '
-         <table class="table m-auto w-75">
+         <table class="tabl m-auto w-75">
          <tr>
              <td> Auteur</td>
-             <td> '.$data['auteur'].'</td>
-             <td rowspan=6><img src='.$data['photo'].' width=160> </td>
+             <td class="h4 text-primary"> '.$data['auteur'].'</td>
+             <td rowspan=6><img src="'.$data['photo'].'" width=160> </td>
          </tr>
          <tr>
              <td> Titre</td>
-             <td>'.$data['titre'].' </td>
+             <td class="h3 text-danger">'.$data['titre'].' </td>
             
          </tr>
          <tr>
@@ -33,17 +33,17 @@
      
          <tr>
              <td> Prix</td>
-             <td> '.$data['prix'].'</td>
+             <td class="text-success bolder"> '.$data['prix'].' FCFA</td>
              
          </tr>
          <tr>
              <td> Courant</td>
-             <td> '.$data['courant'].'</td>
+             <td  class="h5"> '.$data['courant'].'</td>
             
          </tr>
          <tr>
              <td> Description</td>
-             <td> '.$data['description'].'</td>
+             <td class="text-dark"> '.$data['description'].'</td>
            
          </tr>
      </table>
